@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <!--Este título es el del main-->
+        <h1>{{titulo}}</h1>
+        <!--Haciendo una expresión ocupando operador ternario-->
+        <!--<h2>{{cantidad >= 1000 ? 'Es mayor o igual a mil' : 'Es menor a mil'}}</h2>-->
+        <h2>Mi saldo disponible es: {{cantidad}}</h2>
+        <!--Para insertar un enlace desde vuew no es necesario colocar las dobles llaves-->
+        <!--Utilizamos v-bind antes del href-->
+        <a v-bind:href="enlace">Ir al enlace</a>
+        <!--También el v-bind se puede escribir con solo los 2 puntitos antes del href-->
+        <hr>
+        <a v-bind:href="enlace">Ir al enlace</a>
+
+        <!--Separamos un poco-->
+        <hr>
+
+        <!--Para booleanos utilizamos v-if (si el estado es verdadero pintamos el h2)-->
+        <h2 v-if="estado">Cuenta Activa</h2>
+        <!--Tambíen tenemos esl v-else es como un if else si esta activa pinta cuenta activa si no pinta cuenta inactiva-->
+        <!--El v-else siempre funciona si tenemos un v-if-->
+        <h2 v-else>Cuenta Desactivada</h2>
+
+        <hr>
+        <!--Otra Alternativa para el v-if v-else -->
+        <!--TODO: Ahora ocupamos else if (if,else if, else)-->
+        <h2 v-if="cantidad > 500 ">
+            Cantidad:
+            <span style="color:green">{{cantidad}}</span>
+        </h2>
+        <h2 v-else-if="cantidad <= 500 && cantidad > 0">
+            Cantidad:
+            <span style="color:blue">{{cantidad}}</span>
+        </h2>
+        <h2 v-else>
+            Sin cantidad:
+            <span style="color:red">{{cantidad}}</span>
+        </h2>
+
+        <hr>
+        <h2>Mis servicios disponibles</h2>
+        <!--Para acceder a propiedades de un arreglo no necesitamos corchetes-->
+        <!--O cuando llamamos a alguna propiedad del array-->
+        <ul>
+            <!-- Lo podemos hacer así cuando son pocos
+            <li>transferencias</li>
+            <li>pagos</li>
+            <li>giros</li> -->
+            <!--TODO: Lo podemos iterar-->
+            <!--El item va a iterar en servicios-->
+            <!--TODO: Entonces aquí si usamos las llaves pero en el item porque el item itera y es el que va a pintar-->
+            <!--TODO: Si utilizamos esto a futuro nos va a pedir una key-->
+            <!--!Utilizamos el index creo es recomendable solo ponemos en (lo que recorre,index), los : antes del key es del bind y en el key le pasamos el index como registro unico de cada propiedad del array-->
+            <!--Pintamos el index en {{}} llaves para comprobar que cada campo es único-->
+            <!--Como el index empieza en 0 le sumamos 1-->
+            <li v-for="(item, index) in servicios" :key="index">{{index + 1}} - {{item}}</li>
+        </ul>
+
+        <hr>
+        <!--TODO: v-on: permite tener acciones en la página-->
+        <button v-on:click="agregarSaldo">Agregar saldo</button>
+        <!-- v-on: también se puede abreviar solo poniendo un @-->
+        <!--!Al poner disabled cuando acabe el método ya no va a seguir presionando el button pero creamos un booleano desactivar-->
+        <!--Ocupamos el v-bin osea los : para un acto-->
+        <!--!Ocupamos parámetros este párametro se lo enviamos a methods-->
+        <button @click="quitarSaldo(500)" :disabled='desactivar'>Quitar saldo</button>
+
+
+    </div>
+
+    <script src="main.js"></script>
+    <!-- Este es del main.js-->
+    <!-- El app que va después del igual es el del main.js y el #es el del id del div de aqui-->
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+    <!--El mount siempre debe de estar al final-->
+    <!-- Con ese comando de arriba vinculamos el vue-->
+    <!-- Todo va a funcionar dentro del div con el id app-->
+</body>
+</html>
