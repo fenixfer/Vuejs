@@ -7,6 +7,9 @@
     <title>Vue</title>
 
     <script src="https://unpkg.com/vue@next"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -14,7 +17,13 @@
         <h1>{{titulo}}</h1>
         <!--Haciendo una expresión ocupando operador ternario-->
         <!--<h2>{{cantidad >= 1000 ? 'Es mayor o igual a mil' : 'Es menor a mil'}}</h2>-->
-        <h2>Mi saldo disponible es: {{cantidad}}</h2>
+        <!--Utilizando Bootstrap fondo negro y letras color verde-->
+        <!--succes y danger es para letras color verdes y rojas respectivamente-->
+        <!--!Ocupamos el v-bind : para hacer una accón de los atributos del mismo bootstrap jeje-->
+        <!--!Y para validación ocupamos corchetes-->
+        <h2 class="bg-dark" :class="[cantidad >500 ? 'text-success':'text-danger']">
+            Mi saldo disponible es: {{cantidad}}
+        </h2>
         <!--Para insertar un enlace desde vuew no es necesario colocar las dobles llaves-->
         <!--Utilizamos v-bind antes del href-->
         <a v-bind:href="enlace">Ir al enlace</a>
@@ -73,7 +82,7 @@
         <!--!Al poner disabled cuando acabe el método ya no va a seguir presionando el button pero creamos un booleano desactivar-->
         <!--Ocupamos el v-bin osea los : para un acto-->
         <!--!Ocupamos parámetros este párametro se lo enviamos a methods-->
-        <button @click="quitarSaldo(500)" :disabled='desactivar'>Quitar saldo</button>
+        <button @click="quitarSaldo(100)" :disabled='desactivar'>Quitar saldo</button>
 
 
     </div>
