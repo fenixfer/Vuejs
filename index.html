@@ -92,7 +92,12 @@
         <!--Se puede reutilizar o llamas más veces-->
         <!--<footer-banco></footer-banco>-->
         <!--Otra forma de disminuir el código del llamado footer ya que no contiene nada dentro ponemos-->
-        <footer-banco/>
+        <!--!Ocupamos props esto es pasar mediante atributos cantidad="700" a los componentes en este caso Footer.js props-->
+        <!--Utilizamos v-bind o el famoso : porque teien una acción es para hacerlo dinamico
+        como tiene los : o el v-bind podemos llamar la cantidad del main.js sin problemas-->
+        <footer-banco 
+        :valor="cantidad"
+        fecha="septiembre 2021"/>
 
     </div>
     <!--Llamando archivos-->
