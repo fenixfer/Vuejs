@@ -14,14 +14,17 @@
 <body>
     <div id="app">
         <!--Este título es el del main-->
-        <h1>{{titulo}}</h1>
+        <!--Reemplazamos el titulo sencillo declarado en main.js por mayusculasTexto que es una función o clase computada-->
+        <h1>{{mayusculasTexto}}</h1>
         <!--Haciendo una expresión ocupando operador ternario-->
         <!--<h2>{{cantidad >= 1000 ? 'Es mayor o igual a mil' : 'Es menor a mil'}}</h2>-->
         <!--Utilizando Bootstrap fondo negro y letras color verde-->
         <!--succes y danger es para letras color verdes y rojas respectivamente-->
         <!--!Ocupamos el v-bind : para hacer una accón de los atributos del mismo bootstrap jeje-->
         <!--!Y para validación ocupamos corchetes-->
-        <h2 class="bg-dark" :class="[cantidad >500 ? 'text-success':'text-danger']">
+        <!--<h2 class="bg-dark" :class="[cantidad >500 ? 'text-success':'text-danger']">-->
+        <!--El anterior código lo reemplazamos con este utizzando clases computadas-->
+        <h2 class="bg-dark" :class="colorCantidad">
             Mi saldo disponible es: {{cantidad}}
         </h2>
         <!--Para insertar un enlace desde vuew no es necesario colocar las dobles llaves-->
@@ -84,10 +87,18 @@
         <!--!Ocupamos parámetros este párametro se lo enviamos a methods-->
         <button @click="quitarSaldo(100)" :disabled='desactivar'>Quitar saldo</button>
 
+        <!--Ya lo hicimos componente al footer y solo lo llamamos con el nombre que le dimos en el componente-->
+        <!--<footer-banco></footer-banco> se sutituye por el de abajo ya que es más comodo-->
+        <!--Se puede reutilizar o llamas más veces-->
+        <!--<footer-banco></footer-banco>-->
+        <!--Otra forma de disminuir el código del llamado footer ya que no contiene nada dentro ponemos-->
+        <footer-banco/>
 
     </div>
-
+    <!--Llamando archivos-->
     <script src="main.js"></script>
+    <!-- Este siempre tiene que quedar en medio por como va en orden la página-->
+    <script src="components/Footer.js"></script>
     <!-- Este es del main.js-->
     <!-- El app que va después del igual es el del main.js y el #es el del id del div de aqui-->
     <script>

@@ -29,6 +29,17 @@ const app = Vue.createApp({
             this.cantidad = this.cantidad - varlorparametros
         }
     },
+    //TODO: Utilizando clases computadas como en el index en el título h2
+    //! Al utilizar clases computadas siempre tiene que retornar algo
+    computed: {
+        colorCantidad(){
+            //El text-success y danger es el atributo de bootstap
+            return this.cantidad > 500 ? 'text-success' : 'text-danger'  
+        },
+        mayusculasTexto(){
+            return this.titulo.toUpperCase()
+        }
+    }
 })
 
 //TODO: Vue es reactivo, reactivo es si hago cambios en cualquier cosa o propiedad de aqui se visualiza en el sitio web o app
